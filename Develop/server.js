@@ -9,6 +9,14 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+//Use Middleware
+app.use(express.urlencoded({ extended:true }));
+app.use(express.json());
+app.use(express.static("public"));
+
+require("./controllers/HTMLcontroller.js");
+require("./controllers/APIcontroller.js");
+
 
 mongoose.connect(
     process.env.MONGODB_URI || 'mongodb://localhost/WorkoutTracker',
