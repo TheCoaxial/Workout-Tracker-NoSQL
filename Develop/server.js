@@ -26,4 +26,10 @@ mongoose.connect(
       useCreateIndex: true,
       useFindAndModify: false
     }
-  );
+);
+
+
+//Litening to port
+app.listen(PORT, () =>{
+    console.log("App listening on PORT " + PORT);
+})
