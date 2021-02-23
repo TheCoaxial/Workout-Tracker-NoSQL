@@ -1,35 +1,27 @@
-//Requiring in dependencies
-const express = require("express");
-const mongoose = require("mongoose");
+//Require in dependencies
 const path = require("path")
+const express = require("express");
+const logger = require("morgan");
+const mongoose = require("mongoose");
+
 
 
 const PORT = process.env.PORT || 3000;
 
-
 const app = express();
 
-//Use Middleware
-app.use(express.urlencoded({ extended:true }));
+// Use Middleware
+app.use(logger("dev"));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-require("./controllers/HTMLcontroller.js");
-require("./controllers/APIcontroller.js");
+require("./controllers/htmlController.js")(app, path)
+require("./controllers/apiController.js")(app)
 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 
-mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost/WorkoutTracker',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false
-    }
-);
-
-
-//Litening to port
-app.listen(PORT, () =>{
-    console.log("App listening on PORT " + PORT);
-})
+// Listening to port
+app.listen(PORT, () => {
+  console.log('App running on port ' + PORT);
+});
