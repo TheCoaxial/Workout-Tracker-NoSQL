@@ -19,7 +19,12 @@ app.use(express.static("public"));
 require("./controllers/htmlController.js")(app, path)
 require("./controllers/apiController.js")(app)
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { 
+    seNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+});
 
 // Listening to port
 app.listen(PORT, () => {
