@@ -10,7 +10,7 @@ then displayed on the stats page as charts and graphs.
 # Deployed Link
 [Live Site](https://serene-gorge-47840.herokuapp.com/?id=603546b59a0599001537a6e6)
 
-# Demo
+# Demo From LocalHost
 ![Demo-Gif](https://github.com/TheCoaxial/Workout-Tracker-NoSQL/blob/master/Demo.fitness.gif)
 
 # License
